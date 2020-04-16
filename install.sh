@@ -53,4 +53,18 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt install ./google-chrome-stable_current_amd64.deb
 rm -f google-chrome-stable_current_amd64.deb*
 
+# Checkpoint vpn
+apt install default-jre \
+    libnss3-tools \
+    openssl xterm libpam0g:i386 \
+    libx11-6:i386 \
+    libstdc++6:i386 \
+    libstdc++5:i386 -y
+wget https://vpn.dimed.com.br/sslvpn/SNX/INSTALL/snx_install.sh --no-check-certificate
+wget https://vpn.dimed.com.br/sslvpn/SNX/INSTALL/cshell_install.sh --no-check-certificate
+chmod +x *.sh
+./snx_install.sh -y
+./cshell_install.sh -y
+rm -f snx_install.sh cshell_install.sh
+
 echo “Instalação finalizada”
