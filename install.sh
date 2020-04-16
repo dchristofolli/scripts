@@ -1,5 +1,5 @@
 #!/bin/bash
-echo Atualizando repositórios..
+echo Updating repositories..
 if ! apt update
 then
     echo “Não foi possível atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list”
@@ -25,8 +25,8 @@ apt install \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     
-    # Adicionando repositório docker
-    # Using bionic repository while eoan is not released 
+# Adicionando repositório docker
+# Using bionic repository while eoan is not released 
 add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    bionic \
@@ -40,7 +40,12 @@ add-apt-repository \
    
    apt update
 
-   apt install docker-ce \
+apt install docker-ce \
     docker-ce-cli \
     containerd.io docker-compose -y
+    
+# sdkman
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 echo “Instalação finalizada”
