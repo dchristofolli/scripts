@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 echo Updating repositories..
 if ! apt update
 then
@@ -47,5 +47,10 @@ apt install docker-ce \
 # sdkman
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Google chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb
+rm -f google-chrome-stable_current_amd64.deb*
 
 echo “Instalação finalizada”
