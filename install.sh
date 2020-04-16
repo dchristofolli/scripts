@@ -1,9 +1,4 @@
 #!/bin/bash
-# Adicionando repositório docker
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
 echo Atualizando repositórios..
 if ! apt update
 then
@@ -28,7 +23,22 @@ apt install \
     gnupg-agent \
     software-properties-common -y
 
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    
+    # Adicionando repositório docker
+    # Using bionic repository while eoan is not released 
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   bionic \
+   stable"
+   
+# Uncomment when eoan repository available
+# add-apt-repository \
+# "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+# $(lsb_release -cs) \
+# stable"
+   
+   apt update
 
    apt install docker-ce \
     docker-ce-cli \
