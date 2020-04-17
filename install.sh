@@ -45,7 +45,7 @@ apt install docker-ce \
     
 # sdkman
 curl -s "https://get.sdkman.io" | bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
+source "/usr/local/sdkman/bin/sdkman-init.sh"
 
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -115,7 +115,7 @@ apt install ./teams*.deb -y
 # Spotify
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-apt update && APT install spotify-client -y
+apt update && apt install spotify-client -y
 
 # Slack
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.4.2-amd64.deb
@@ -131,6 +131,6 @@ bash -c "echo options nvidia-drm modeset=1 >>  /etc/modprobe.d/nvidia-drm-nomode
 apt upgrade -y
 apt install -f
 update-initramfs -u
-apt autoremove
+apt autoremove -y
+echo “Reiniciando”
 reboot
-echo “Instalação finalizada”
