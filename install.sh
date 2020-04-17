@@ -62,8 +62,8 @@ apt install default-jdk \
 wget https://vpn.dimed.com.br/sslvpn/SNX/INSTALL/snx_install.sh --no-check-certificate
 wget https://vpn.dimed.com.br/sslvpn/SNX/INSTALL/cshell_install.sh --no-check-certificate
 chmod +x *.sh
-./snx_install.sh -y
-./cshell_install.sh -y
+sudo ./snx_install.sh
+sudo ./cshell_install.sh
 rm -f snx_install.sh cshell_install.sh
 
 # VS Code
