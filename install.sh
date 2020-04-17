@@ -37,7 +37,7 @@ add-apt-repository \
 # $(lsb_release -cs) \
 # stable"
    
-   apt update
+apt update
 
 apt install docker-ce \
     docker-ce-cli \
@@ -71,6 +71,20 @@ wget https://go.microsoft.com/fwlink/?LinkID=760868
 apt install ./code*.deb -y
 rm -f code*.deb
 
+# Postman
+wget https://dl.pstmn.io/download/latest/linux64
+tar -zxf tar -zxf linux64 -C /opt/
+echo -e "[Desktop Entry]\n
+Encoding=UTF-8\n
+Name=Postman\n
+Exec=/opt/Postman/app/Postman %U\n
+Icon=/opt/Postman/app/resources/app/assets/icon.png\n
+Terminal=false\n
+Type=Application\n
+Categories=Development;" >> ~/.local/share/applications/Postman.desktop
+rm -f linux64
+
+
 # Insomnia rest
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
     | sudo tee -a /etc/apt/sources.list.d/insomnia.list
@@ -79,4 +93,38 @@ wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
 apt update
 apt install insomnia -y
 
+# Sublime text
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+apt update
+apt install sublime-text -y
+
+# Zsh
+apt install zsh -y
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Microsoft Teams
+wget https://go.microsoft.com/fwlink/p/?linkid=2112886&clcid=0x409&culture=en-us&country=us
+apt install ./teams*.deb -y
+
+# Spotify
+curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+apt update && APT install spotify-client -y
+
+# Slack
+wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.4.2-amd64.deb
+apt install ./slack*.deb -y
+rm -f slack*.deb
+
+# Configuração driver Nvidia
+bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+bash -c "echo options nvidia-drm modeset=1 >>  /etc/modprobe.d/nvidia-drm-nomodeset.conf"
+
+# Limpeza e finalização
+apt install -f
+update-initramfs -u
+apt autoremove
+reboot
 echo “Instalação finalizada”
