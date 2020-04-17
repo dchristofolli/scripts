@@ -25,14 +25,13 @@ apt install \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     
-# Adicionando repositório docker
-# Using bionic repository while eoan is not released 
+# Usando repositório Bionic enquanto o Eoan não é lançado 
 add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    bionic \
    stable"
    
-# Uncomment when eoan repository available
+# Descomentar quando a versão Eoan for lançada
 # add-apt-repository \
 # "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
 # $(lsb_release -cs) \
@@ -50,7 +49,7 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt install ./google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb -y
 rm -f google-chrome-stable_current_amd64.deb*
 
 # Checkpoint vpn
@@ -66,5 +65,10 @@ chmod +x *.sh
 ./snx_install.sh -y
 ./cshell_install.sh -y
 rm -f snx_install.sh cshell_install.sh
+
+# VS Code
+wget https://go.microsoft.com/fwlink/?LinkID=760868
+apt install ./code*.deb -y
+rm -f code*.deb
 
 echo “Instalação finalizada”
