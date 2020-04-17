@@ -71,4 +71,12 @@ wget https://go.microsoft.com/fwlink/?LinkID=760868
 apt install ./code*.deb -y
 rm -f code*.deb
 
+# Insomnia rest
+echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
+    | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
+    | sudo apt-key add -
+apt update
+apt install insomnia -y
+
 echo “Instalação finalizada”
