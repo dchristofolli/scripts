@@ -53,7 +53,7 @@ apt install ./google-chrome-stable_current_amd64.deb -y
 rm -f google-chrome-stable_current_amd64.deb*
 
 # Checkpoint vpn
-apt install default-jre \
+apt install default-jdk \
     libnss3-tools \
     openssl xterm libpam0g:i386 \
     libx11-6:i386 \
@@ -67,9 +67,14 @@ chmod +x *.sh
 rm -f snx_install.sh cshell_install.sh
 
 # VS Code
-wget https://go.microsoft.com/fwlink/?LinkID=760868
-apt install ./code*.deb -y
-rm -f code*.deb
+wget "https://go.microsoft.com/fwlink/?LinkID=620884" -O vscode.tar.gz
+tar -vzxf vscode.tar.gz -C /opt/
+mv /opt/VSCode*/ /opt/vscode/
+ln -sf /opt/vscode/code /usr/bin/code
+echo -e '[Desktop Entry]\n Version=1.0\n Name=vscode\n 
+Exec=/opt/vscode/code\n Icon=/opt/vscode/resources/app/resources/linux/code.png\n 
+Type=Application\n Categories=Application' | 
+tee /usr/share/applications/vscode.desktop
 
 # Postman
 wget https://dl.pstmn.io/download/latest/linux64
@@ -101,7 +106,7 @@ apt install sublime-text -y
 
 # Zsh
 apt install zsh -y
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
 
 # Microsoft Teams
 wget https://go.microsoft.com/fwlink/p/?linkid=2112886&clcid=0x409&culture=en-us&country=us
@@ -123,6 +128,7 @@ bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouv
 bash -c "echo options nvidia-drm modeset=1 >>  /etc/modprobe.d/nvidia-drm-nomodeset.conf"
 
 # Limpeza e finalização
+apt upgrade -y
 apt install -f
 update-initramfs -u
 apt autoremove
