@@ -43,9 +43,6 @@ apt install docker-ce \
     docker-ce-cli \
     containerd.io docker-compose -y
     
-# sdkman
-curl -s "https://get.sdkman.io" | bash
-source "/usr/local/sdkman/bin/sdkman-init.sh"
 
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -106,11 +103,10 @@ apt install sublime-text -y
 
 # Zsh
 apt install zsh -y
-# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
 
 # Microsoft Teams
 wget https://go.microsoft.com/fwlink/p/?linkid=2112886&clcid=0x409&culture=en-us&country=us
-apt install ./teams*.deb -y
+apt install ./teams_1.3.00.5153_amd64.deb -y
 
 # Spotify
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
@@ -132,5 +128,9 @@ apt upgrade -y
 apt install -f
 update-initramfs -u
 apt autoremove -y
-echo “Reiniciando”
-reboot
+exit
+# sdkman
+curl -s "https://get.sdkman.io" | bash
+source "/usr/local/sdkman/bin/sdkman-init.sh"
+echo “Por favor, reinicie o sistema”
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
