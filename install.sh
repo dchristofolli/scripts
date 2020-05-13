@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 echo Updating repositories..
 if ! apt update
 then
@@ -24,25 +24,24 @@ apt install \
     software-properties-common -y
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    
-# Usando repositório Bionic enquanto o Eoan não é lançado 
+
+# Usando repositório Bionic enquanto o Eoan não é lançado
 add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    bionic \
    stable"
-   
+
 # Descomentar quando a versão Eoan for lançada
 # add-apt-repository \
 # "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
 # $(lsb_release -cs) \
 # stable"
-   
+
 apt update
 
 apt install docker-ce \
     docker-ce-cli \
     containerd.io docker-compose -y
-    
 
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -73,20 +72,6 @@ Exec=/opt/vscode/code\n Icon=/opt/vscode/resources/app/resources/linux/code.png\
 Type=Application\n Categories=Application' | 
 tee /usr/share/applications/vscode.desktop
 
-# Postman
-wget https://dl.pstmn.io/download/latest/linux64
-tar -zxf tar -zxf linux64 -C /opt/
-echo -e "[Desktop Entry]\n
-Encoding=UTF-8\n
-Name=Postman\n
-Exec=/opt/Postman/app/Postman %U\n
-Icon=/opt/Postman/app/resources/app/assets/icon.png\n
-Terminal=false\n
-Type=Application\n
-Categories=Development;" >> ~/.local/share/applications/Postman.desktop
-rm -f linux64
-
-
 # Insomnia rest
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
     | sudo tee -a /etc/apt/sources.list.d/insomnia.list
@@ -104,14 +89,13 @@ apt install sublime-text -y
 # Zsh
 apt install zsh -y
 
-# Microsoft Teams
-wget https://go.microsoft.com/fwlink/p/?linkid=2112886&clcid=0x409&culture=en-us&country=us
-apt install ./teams_1.3.00.5153_amd64.deb -y
-
 # Spotify
-curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
+curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 apt update && apt install spotify-client -y
+
+# VLC
+sudo apt install vlc -y
 
 # Slack
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.4.2-amd64.deb
@@ -128,9 +112,4 @@ apt upgrade -y
 apt install -f
 update-initramfs -u
 apt autoremove -y
-exit
-# sdkman
-curl -s "https://get.sdkman.io" | bash
-source "/usr/local/sdkman/bin/sdkman-init.sh"
-echo “Por favor, reinicie o sistema”
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
+reboot
