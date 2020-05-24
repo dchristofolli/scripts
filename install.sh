@@ -16,6 +16,9 @@ fi
 # shellcheck disable=SC1110
 echo “Atualização de pacotes feita com sucesso”
 
+# Gnome
+apt install gnome gdm3
+
 # Docker
 apt install \
     apt-transport-https \
