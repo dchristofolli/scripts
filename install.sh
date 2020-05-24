@@ -122,6 +122,7 @@ echo "export PATH=~/.npm-global/bin:$PATH < ~/.profile"
 source ~/.profile
 
 # Configuração driver Nvidia
+apt install nvidia-driver-440
 bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
 bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
 bash -c "echo options nvidia-drm modeset=1 >>  /etc/modprobe.d/nvidia-drm-nomodeset.conf"
