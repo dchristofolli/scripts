@@ -2,7 +2,7 @@
 echo Updating repositories..
 if ! apt update
 then
-    echo “Não foi possível atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list”
+    echo "Não foi possível atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list"
     exit 1
 fi
 echo “Atualização feita com sucesso”
@@ -13,6 +13,7 @@ then
     echo “Não foi possível atualizar pacotes.”
     exit 1
 fi
+# shellcheck disable=SC1110
 echo “Atualização de pacotes feita com sucesso”
 
 # Docker
@@ -95,12 +96,27 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sou
 apt update && apt install spotify-client -y
 
 # VLC
-sudo apt install vlc -y
+apt install vlc -y
 
 # Slack
-wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.4.2-amd64.deb
-apt install ./slack*.deb -y
-rm -f slack*.deb
+wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.4.3-amd64.deb
+apt install ./slack-desktop-4.4.3-amd64.deb -y
+rm -f slack-desktop-4.4.3-amd64.deb
+
+# Sdkman
+curl -s "https://get.sdkman.io" | bash
+Follow the instructions on-screen to complete installation.
+source "$HOME/.sdkman/bin/sdkman-init.sh
+
+# NodeJS
+wget https://nodejs.org/dist/v12.16.3/node-v12.16.3-linux-x64.tar.xz
+mkdir -p /usr/local/lib/nodejs
+tar -xJvf node-v12.16.3-linux-x64.tar.xz -C /usr/local/lib/nodejs 
+export PATH=/usr/local/lib/nodejs/node-v12.16.3-linux-x64/bin:$PATH
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo "export PATH=~/.npm-global/bin:$PATH < ~/.profile"
+source ~/.profile
 
 # Configuração driver Nvidia
 bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
