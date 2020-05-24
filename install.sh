@@ -108,6 +108,9 @@ curl -s "https://get.sdkman.io" | bash
 Follow the instructions on-screen to complete installation.
 source "$HOME/.sdkman/bin/sdkman-init.sh
 
+# Java 11
+sdk i java 11.0.7-open
+
 # NodeJS
 wget https://nodejs.org/dist/v12.16.3/node-v12.16.3-linux-x64.tar.xz
 mkdir -p /usr/local/lib/nodejs
