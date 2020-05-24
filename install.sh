@@ -124,6 +124,11 @@ npm config set prefix '~/.npm-global'
 echo "export PATH=~/.npm-global/bin:$PATH < ~/.profile"
 source ~/.profile
 
+# Virtualbox
+wget https://download.virtualbox.org/virtualbox/6.1.8/virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
+apt install ./virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
+rm -f virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
+
 # Configuração driver Nvidia
 apt install nvidia-driver-440
 bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
