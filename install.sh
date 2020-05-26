@@ -67,14 +67,9 @@ sudo ./cshell_install.sh
 rm -f snx_install.sh cshell_install.sh
 
 # VS Code
-wget "https://go.microsoft.com/fwlink/?LinkID=620884" -O vscode.tar.gz
-tar -vzxf vscode.tar.gz -C /opt/
-mv /opt/VSCode*/ /opt/vscode/
-ln -sf /opt/vscode/code /usr/bin/code
-echo -e '[Desktop Entry]\n Version=1.0\n Name=vscode\n 
-Exec=/opt/vscode/code\n Icon=/opt/vscode/resources/app/resources/linux/code.png\n 
-Type=Application\n Categories=Application' | 
-tee /usr/share/applications/vscode.desktop
+wget https://go.microsoft.com/fwlink/?LinkID=760868
+apt install ./code*.deb
+rm -f code*.deb
 
 # Insomnia rest
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
