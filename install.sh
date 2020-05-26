@@ -67,14 +67,8 @@ sudo ./cshell_install.sh
 rm -f snx_install.sh cshell_install.sh
 
 # VS Code
-wget "https://go.microsoft.com/fwlink/?LinkID=620884" -O vscode.tar.gz
-tar -vzxf vscode.tar.gz -C /opt/
-mv /opt/VSCode*/ /opt/vscode/
-ln -sf /opt/vscode/code /usr/bin/code
-echo -e '[Desktop Entry]\n Version=1.0\n Name=vscode\n 
-Exec=/opt/vscode/code\n Icon=/opt/vscode/resources/app/resources/linux/code.png\n 
-Type=Application\n Categories=Application' | 
-tee /usr/share/applications/vscode.desktop
+wget https://go.microsoft.com/fwlink/?LinkID=760868
+apt install ./code*.deb
 
 # Insomnia rest
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
@@ -108,8 +102,7 @@ rm -f slack-desktop-4.4.3-amd64.deb
 
 # Sdkman
 curl -s "https://get.sdkman.io" | bash
-Follow the instructions on-screen to complete installation.
-source "$HOME/.sdkman/bin/sdkman-init.sh
+source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Java 11
 sdk i java 11.0.7-open
@@ -130,7 +123,7 @@ apt install ./virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
 rm -f virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
 
 # Configuração driver Nvidia
-apt install nvidia-driver-440
+apt install nvidia-driver-440 -y
 bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
 bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
 bash -c "echo options nvidia-drm modeset=1 >>  /etc/modprobe.d/nvidia-drm-nomodeset.conf"
