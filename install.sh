@@ -69,6 +69,7 @@ rm -f snx_install.sh cshell_install.sh
 # VS Code
 wget https://go.microsoft.com/fwlink/?LinkID=760868
 apt install ./code*.deb
+rm -f code*.deb
 
 # Insomnia rest
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
