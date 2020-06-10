@@ -28,18 +28,10 @@ apt install \
     software-properties-common -y
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-
-# Usando repositório Bionic enquanto o Eoan não é lançado
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   bionic \
-   stable"
-
-# Descomentar quando a versão Eoan for lançada
-# add-apt-repository \
-# "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-# $(lsb_release -cs) \
-# stable"
+ add-apt-repository \
+ "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+ $(lsb_release -cs) \
+ stable"
 
 apt update
 
@@ -66,11 +58,6 @@ sudo ./snx_install.sh
 sudo ./cshell_install.sh
 rm -f snx_install.sh cshell_install.sh
 
-# VS Code
-wget https://go.microsoft.com/fwlink/?LinkID=760868
-apt install ./code*.deb
-rm -f code*.deb
-
 # Insomnia rest
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
     | sudo tee -a /etc/apt/sources.list.d/insomnia.list
@@ -95,18 +82,6 @@ apt update && apt install spotify-client -y
 
 # VLC
 apt install vlc -y
-
-# Slack
-wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.4.3-amd64.deb
-apt install ./slack-desktop-4.4.3-amd64.deb -y
-rm -f slack-desktop-4.4.3-amd64.deb
-
-# Sdkman
-curl -s "https://get.sdkman.io" | bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# Java 11
-sdk i java 11.0.7-open
 
 # NodeJS
 wget https://nodejs.org/dist/v12.16.3/node-v12.16.3-linux-x64.tar.xz
