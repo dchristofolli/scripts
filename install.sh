@@ -26,15 +26,12 @@ apt install \
     curl \
     gnupg-agent \
     software-properties-common -y
-
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
  add-apt-repository \
  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
  $(lsb_release -cs) \
  stable"
-
 apt update
-
 apt install docker-ce \
     docker-ce-cli \
     containerd.io docker-compose -y
@@ -82,16 +79,6 @@ apt update && apt install spotify-client -y
 
 # VLC
 apt install vlc -y
-
-# NodeJS
-wget https://nodejs.org/dist/v12.16.3/node-v12.16.3-linux-x64.tar.xz
-mkdir -p /usr/local/lib/nodejs
-tar -xJvf node-v12.16.3-linux-x64.tar.xz -C /usr/local/lib/nodejs 
-export PATH=/usr/local/lib/nodejs/node-v12.16.3-linux-x64/bin:$PATH
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-echo "export PATH=~/.npm-global/bin:$PATH < ~/.profile"
-source ~/.profile
 
 # Virtualbox
 wget https://download.virtualbox.org/virtualbox/6.1.8/virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
