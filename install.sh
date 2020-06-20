@@ -86,7 +86,7 @@ apt install ./virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
 rm -f virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
 
 # NodeJS
-VERSION=v12.18.0
+VERSION=v12.18.1
 DISTRO=linux-x64
 wget https://nodejs.org/dist/$VERSION/node-$VERSION-$DISTRO.tar.xz
 mkdir -p /usr/local/lib/nodejs
