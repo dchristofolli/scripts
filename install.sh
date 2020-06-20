@@ -41,20 +41,6 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt install ./google-chrome-stable_current_amd64.deb -y
 rm -f google-chrome-stable_current_amd64.deb*
 
-# Checkpoint vpn
-apt install default-jdk \
-    libnss3-tools \
-    openssl xterm libpam0g:i386 \
-    libx11-6:i386 \
-    libstdc++6:i386 \
-    libstdc++5:i386 -y
-wget https://vpn.dimed.com.br/sslvpn/SNX/INSTALL/snx_install.sh --no-check-certificate
-wget https://vpn.dimed.com.br/sslvpn/SNX/INSTALL/cshell_install.sh --no-check-certificate
-chmod +x *.sh
-sudo ./snx_install.sh
-sudo ./cshell_install.sh
-rm -f snx_install.sh cshell_install.sh
-
 # Insomnia rest
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
     | sudo tee -a /etc/apt/sources.list.d/insomnia.list
