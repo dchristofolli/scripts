@@ -71,17 +71,10 @@ wget https://download.virtualbox.org/virtualbox/6.1.8/virtualbox-6.1_6.1.8-13798
 apt install ./virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
 rm -f virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
 
-# NodeJS
-VERSION=v12.18.1
-DISTRO=linux-x64
-wget https://nodejs.org/dist/$VERSION/node-$VERSION-$DISTRO.tar.xz
-mkdir -p /usr/local/lib/nodejs
-tar -xJvf node-$VERSION-$DISTRO.tar.xz -C /usr/local/lib/nodejs
-export PATH=/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin:$PATH
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-echo "export PATH=~/.npm-global/bin:$PATH < ~/.profile"
-source ~/.profile
+# Papirus icon theme
+add-apt-repository ppa:papirus/papirus
+apt update
+apt install papirus-icon-theme -y
 
 # Configuração driver Nvidia
 bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
