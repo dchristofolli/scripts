@@ -16,6 +16,10 @@ fi
 # shellcheck disable=SC1110
 echo “Atualização de pacotes feita com sucesso”
 
+# Git
+apt install git
+
+
 # Gnome
 apt install gnome gdm3
 
@@ -35,19 +39,12 @@ apt update
 apt install docker-ce \
     docker-ce-cli \
     containerd.io docker-compose -y
+usermod -aG docker daniel
 
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 apt install ./google-chrome-stable_current_amd64.deb -y
 rm -f google-chrome-stable_current_amd64.deb*
-
-# Insomnia rest
-echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
-    | sudo tee -a /etc/apt/sources.list.d/insomnia.list
-wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
-    | sudo apt-key add -
-apt update
-apt install insomnia -y
 
 # Sublime text
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
@@ -57,6 +54,49 @@ apt install sublime-text -y
 
 # Zsh
 apt install zsh -y
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
+
+# Sdkman
+curl -s "https://get.sdkman.io" | bash
+echo "source $HOME/.sdkman/bin/sdkman-init.sh" >> /home/daniel/.zshrc
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk i java 11.0.10-open
+sdk i gradle
+
+# NodeJS
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/daniel/.zshrc
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install --lts
+
+# Angular
+npm i -g @angular/cli
+
+# VS Code
+wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+apt install ./code*.deb
+rm code*.deb
+
+# Postman
+wget https://dl.pstmn.io/download/latest/linux64
+tar -xzf Postman-linux-x64-*.tar.gz
+mv Postman /opt/Postman
+ln -s /opt/Postman/Postman /usr/bin/postman
+cat > ~/.local/share/applications/postman.desktop <<EOL
+[Desktop Entry]
+Encoding=UTF-8
+Name=Postman
+Exec=postman
+# Before v6.1.2
+# Icon=/opt/Postman/resources/app/assets/icon.png
+Icon=/opt/Postman/app/resources/app/assets/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+EOL
+rm Postman-linux-x64-*.tar.gz
 
 # Spotify
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
@@ -67,19 +107,9 @@ apt update && apt install spotify-client -y
 apt install vlc -y
 
 # Virtualbox
-wget https://download.virtualbox.org/virtualbox/6.1.8/virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
-apt install ./virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
-rm -f virtualbox-6.1_6.1.8-137981~Ubuntu~eoan_amd64.deb
-
-# Papirus icon theme
-add-apt-repository ppa:papirus/papirus
-apt update
-apt install papirus-icon-theme -y
-
-# Configuração driver Nvidia
-bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-bash -c "echo options nvidia-drm modeset=1 >>  /etc/modprobe.d/nvidia-drm-nomodeset.conf"
+wget https://download.virtualbox.org/virtualbox/6.1.18/virtualbox-6.1_6.1.18-142142~Ubuntu~eoan_amd64.deb
+apt install ./virtualbox-6.1_6.1.18-142142~Ubuntu~eoan_amd64.deb
+rm -f virtualbox-6.1_6.1.18-142142~Ubuntu~eoan_amd64.deb
 
 # Limpeza e finalização
 apt upgrade -y
