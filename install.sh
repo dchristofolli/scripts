@@ -52,10 +52,6 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 apt update
 apt install sublime-text -y
 
-# Zsh
-apt install zsh -y
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
-
 # Sdkman
 curl -s "https://get.sdkman.io" | bash
 echo "source $HOME/.sdkman/bin/sdkman-init.sh" >> /home/daniel/.zshrc
@@ -111,9 +107,6 @@ wget https://download.virtualbox.org/virtualbox/6.1.18/virtualbox-6.1_6.1.18-142
 apt install ./virtualbox-6.1_6.1.18-142142~Ubuntu~eoan_amd64.deb
 rm -f virtualbox-6.1_6.1.18-142142~Ubuntu~eoan_amd64.deb
 
-# Limpeza e finalização
-apt upgrade -y
-apt install -f
-update-initramfs -u
-apt autoremove -y
-reboot
+# Zsh
+apt install zsh -y
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
