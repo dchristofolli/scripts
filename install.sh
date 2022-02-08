@@ -17,17 +17,17 @@ fi
 echo “Atualização de pacotes feita com sucesso”
 
 # Git
-apt install git
+apt install git -y
 
 # Zsh
 apt install zsh -y
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
 
 # Gnome
-apt install gnome-session
+apt install gnome-session -y
 
 # Docker
-apt install \
+apt -y install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -39,7 +39,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
  $(lsb_release -cs) \
  stable"
 apt update
-apt install docker-ce \
+apt -y install docker-ce \
     docker-ce-cli \
     containerd.io -y
 usermod -aG docker $USER
