@@ -61,13 +61,16 @@ apt install sublime-text -y
 
 # Sdkman
 curl -s "https://get.sdkman.io" | bash
+echo "source $HOME/.sdkman/bin/sdkman-init.sh" >> $HOME/.shrc
 echo "source $HOME/.sdkman/bin/sdkman-init.sh" >> $HOME/.zshrc
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk i java 11.0.12-open
 sdk i gradle
 
 # NodeJS
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/daniel/.bashrc
 echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/daniel/.zshrc
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -75,9 +78,10 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 nvm install --lts
 
 # VS Code
-wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-apt install ./code*.deb
-rm code*.deb
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt update
+sudo apt install code
 
 # Postman
 curl https://dl.pstmn.io/download/latest/linux -o postman.tar.gz
@@ -96,7 +100,7 @@ EOF
 rm Postman-linux-x64-*.tar.gz
 
 # Spotify
-curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
+curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 apt update && apt install spotify-client -y
 
@@ -105,10 +109,10 @@ apt install vlc virtualbox -y
 
 # Teams
 wget "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb" -O teams.deb
-apt install teams.deb
+apt install ./teams.deb
 rm teams.deb
 
 # RocketChat
 wget "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.7.7/rocketchat_3.7.7_amd64.deb" -O rocketchat.deb
-apt install rocketchat.deb
+apt install ./rocketchat.deb
 rm rocketchat.deb
