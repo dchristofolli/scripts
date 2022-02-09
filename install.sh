@@ -116,3 +116,7 @@ rm teams.deb
 wget "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.7.7/rocketchat_3.7.7_amd64.deb" -O rocketchat.deb
 apt install ./rocketchat.deb
 rm rocketchat.deb
+
+# Discord
+wget "https://dl.discordapp.net/apps/linux/0.0.16/discord-0.0.16.deb" -O discord.deb
+apt install ./discord.deb
