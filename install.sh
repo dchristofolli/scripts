@@ -8,7 +8,7 @@ fi
 echo “Atualização feita com sucesso”
 
 echo “Atualizando pacotes já instalados”
-if ! sudo apt dist-upgrade -y
+if ! sudo apt upgrade -y
 then
     echo “Não foi possível atualizar pacotes.”
     exit 1
@@ -59,7 +59,6 @@ sudo apt install sublime-text -y
 
 # Sdkman
 curl -s "https://get.sdkman.io" | bash
-echo "source $HOME/.sdkman/bin/sdkman-init.sh" >> $HOME/.shrc
 echo "source $HOME/.sdkman/bin/sdkman-init.sh" >> $HOME/.zshrc
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk i java 11.0.12-open
@@ -95,7 +94,7 @@ Exec="/opt/Postman/Postman"
 Comment=Postman GUI
 Categories=Development;Code;
 EOT
-rm Postman-linux-x64-*.tar.gz
+rm postman.tar.gz
 
 # Spotify
 curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
