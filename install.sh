@@ -16,25 +16,22 @@ fi
 # shellcheck disable=SC1110
 echo “Atualização de pacotes feita com sucesso”
 
-# Git
-sudo apt install git -y
-
 # Zsh
 sudo apt install zsh -y
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Gnome
 sudo apt install gnome-session -y
 
 # Docker
 sudo apt -y install \
-    sudo apt-transport-https \
+    apt-transport-https \
     ca-certificates \
     curl \
     gnupg-agent \
     software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
- add-sudo apt-repository \
+ sudo add-apt-repository \
  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
  $(lsb_release -cs) \
  stable"
@@ -45,8 +42,8 @@ sudo apt -y install docker-ce \
 sudo usermod -aG docker $USER
 sudo systemctl start docker
 sudo systemctl enable docker
-curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -54,8 +51,9 @@ sudo apt install ./google-chrome-stable_current_amd64.deb -y
 rm -f google-chrome-stable_current_amd64.deb*
 
 # Sublime text
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo sudo apt-key add -
-echo "deb https://download.sublimetext.com/ sudo apt/stable/" | sudo tee /etc/sudo apt/sources.list.d/sublime-text.list
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo apt-get install apt-transport-https -y
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt update
 sudo apt install sublime-text -y
 
@@ -88,7 +86,7 @@ curl https://dl.pstmn.io/download/latest/linux -o postman.tar.gz
 tar zxvf postman.tar.gz
 sudo mv Postman /opt
 sudo ln -s /opt/Postman/Postman /usr/local/bin/postman
-sudo cat <<EOF > /usr/share/applications/postman.desktop
+sudo tee -a /usr/share/applications/postman.desktop > /dev/null << EOT
 [Desktop Entry]
 Type=Application
 Name=Postman
@@ -96,12 +94,12 @@ Icon=/opt/Postman/app/resources/app/assets/icon.png
 Exec="/opt/Postman/Postman"
 Comment=Postman GUI
 Categories=Development;Code;
-EOF
+EOT
 rm Postman-linux-x64-*.tar.gz
 
 # Spotify
-curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo sudo apt-key add - 
-echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/sudo apt/sources.list.d/spotify.list
+curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update && sudo apt install spotify-client -y
 
 # VLC e Virtualbox
@@ -119,4 +117,11 @@ rm rocketchat.deb
 
 # Discord
 wget "https://dl.discordapp.net/apps/linux/0.0.16/discord-0.0.16.deb" -O discord.deb
-sudo apt install ./discord.deb
+sudo apt -y install ./discord.deb
+rm discord.deb
+
+# Genymotion
+wget "https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin" -O genymotion.bin
+chmod +x genymotion.bin
+./genymotion.bin
+rm genymotion.bin
