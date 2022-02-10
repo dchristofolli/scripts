@@ -123,5 +123,5 @@ rm discord.deb
 # Genymotion
 wget "https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin" -O genymotion.bin
 chmod +x genymotion.bin
-./genymotion.bin
+./genymotion.bin -y
 rm genymotion.bin
