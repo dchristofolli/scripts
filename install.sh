@@ -145,3 +145,4 @@ MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vn
 StartupWMClass=Firefox
 StartupNotify=true
 EOT
+sudo rm /opt/firefox.tar.bz2
