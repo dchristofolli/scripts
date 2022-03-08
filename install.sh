@@ -126,7 +126,7 @@ chmod +x genymotion.bin
 rm genymotion.bin
 
 # Firefox latest version
- sudo wget -O /opt/firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+sudo wget -O /opt/firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
 sudo tar -jxvf /opt/firefox.tar.bz2 -C /opt
 sudo tee -a /usr/share/applications/firefox.desktop > /dev/null << EOT
 [Desktop Entry]
