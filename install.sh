@@ -124,3 +124,24 @@ wget "https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux
 chmod +x genymotion.bin
 ./genymotion.bin -y
 rm genymotion.bin
+
+# Firefox latest version
+ sudo wget -O /opt/firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+sudo tar -jxvf /opt/firefox.tar.bz2 -C /opt
+sudo tee -a /usr/share/applications/firefox.desktop > /dev/null << EOT
+[Desktop Entry]
+Encoding=UTF-8
+Name=Firefox Web Browser
+Comment=Browse the World Wide Web
+GenericName=Web Browser
+X-GNOME-FullName=Firefox Web Browser
+Exec=/opt/firefox/firefox %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/opt/firefox/browser/chrome/icons/default/default128.png
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
+StartupWMClass=Firefox
+StartupNotify=true
+EOT
