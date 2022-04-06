@@ -20,9 +20,6 @@ echo “Atualização de pacotes feita com sucesso”
 sudo apt install zsh -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# Gnome
-sudo apt install gnome-session -y
-
 # Docker
 sudo apt -y install \
     apt-transport-https \
@@ -49,13 +46,6 @@ sudo chmod +x /usr/local/bin/docker-compose
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb -y
 rm -f google-chrome-stable_current_amd64.deb*
-
-# Sublime text
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-sudo apt-get install apt-transport-https -y
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-sudo apt update
-sudo apt install sublime-text -y
 
 # Sdkman
 curl -s "https://get.sdkman.io" | bash
@@ -129,24 +119,4 @@ chmod +x genymotion.bin
 ./genymotion.bin -y
 rm genymotion.bin
 
-# Firefox latest version
-sudo wget -O /opt/firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-sudo tar -jxvf /opt/firefox.tar.bz2 -C /opt
-sudo tee -a /usr/share/applications/firefox_latest.desktop > /dev/null << EOT
-[Desktop Entry]
-Encoding=UTF-8
-Name=Firefox Web Browser
-Comment=Browse the World Wide Web
-GenericName=Web Browser
-X-GNOME-FullName=Firefox Web Browser
-Exec=/opt/firefox/firefox %u
-Terminal=false
-X-MultipleArgs=false
-Type=Application
-Icon=/opt/firefox/browser/chrome/icons/default/default128.png
-Categories=Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
-StartupWMClass=Firefox
-StartupNotify=true
-EOT
-sudo rm /opt/firefox.tar.bz2
+sudo apt autoremove -y
