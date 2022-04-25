@@ -109,7 +109,7 @@ sudo apt install ./rocketchat.deb
 rm rocketchat.deb
 
 # Discord
-wget "https://dl.discordapp.net/apps/linux/0.0.16/discord-0.0.16.deb" -O discord.deb
+wget "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb" -O discord.deb
 sudo apt -y install ./discord.deb
 rm discord.deb
 
