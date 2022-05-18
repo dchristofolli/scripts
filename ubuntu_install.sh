@@ -113,10 +113,4 @@ wget "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb" -O discord
 sudo apt -y install ./discord.deb
 rm discord.deb
 
-# Genymotion
-wget "https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin" -O genymotion.bin
-chmod +x genymotion.bin
-./genymotion.bin -y
-rm genymotion.bin
-
 sudo apt autoremove -y
