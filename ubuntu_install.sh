@@ -47,15 +47,9 @@ sudo systemctl enable docker
 #sudo chmod +x /usr/local/bin/docker-compose
 
 # Google chrome
-<<<<<<< HEAD
 #wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 #sudo apt install ./google-chrome-stable_current_amd64.deb -y
 #rm -f google-chrome-stable_current_amd64.deb*
-=======
-# wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-# sudo apt install ./google-chrome-stable_current_amd64.deb -y
-# rm -f google-chrome-stable_current_amd64.deb*
->>>>>>> 747e99272c5eb62280fd4e494319c52e788b9c3a
 
 # Sdkman
 curl -s "https://get.sdkman.io" | bash
@@ -64,7 +58,6 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk i java 11.0.12-open
 sdk i gradle
 
-<<<<<<< HEAD
 #IntelliJ
 
 #Android Studio
@@ -82,21 +75,6 @@ nvm install --lts
 #NodeJS latest LTS(Official)
 #curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 #sudo apt install -y nodejs
-=======
-NodeJS (NVM)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.bashrc
-echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.zshrc
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvm install --lts
-
-#NodeJS(Official)
-# curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-# sudo apt install -y nodejs
->>>>>>> 747e99272c5eb62280fd4e494319c52e788b9c3a
 
 # VS Code
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
@@ -144,14 +122,8 @@ sudo apt install ./evernote.deb
 rm evernote.deb
 
 # Discord
-<<<<<<< HEAD
 #wget "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb" -O discord.deb
 #sudo apt -y install ./discord.deb
 #rm discord.deb
-=======
-# wget "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb" -O discord.deb
-# sudo apt -y install ./discord.deb
-# rm discord.deb
->>>>>>> 747e99272c5eb62280fd4e494319c52e788b9c3a
 
 sudo apt autoremove -y
