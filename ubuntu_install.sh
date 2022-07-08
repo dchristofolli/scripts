@@ -18,7 +18,9 @@ echo “Atualização de pacotes feita com sucesso”
 
 # Zsh
 sudo apt install zsh -y
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# oh-my-zsh
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Docker
 sudo apt -y install \
@@ -39,13 +41,15 @@ sudo apt -y install docker-ce \
 sudo usermod -aG docker $USER
 sudo systemctl start docker
 sudo systemctl enable docker
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+
+# Docker Compose V1
+#sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+#sudo chmod +x /usr/local/bin/docker-compose
 
 # Google chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb -y
-rm -f google-chrome-stable_current_amd64.deb*
+#wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#sudo apt install ./google-chrome-stable_current_amd64.deb -y
+#rm -f google-chrome-stable_current_amd64.deb*
 
 # Sdkman
 curl -s "https://get.sdkman.io" | bash
@@ -54,19 +58,23 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk i java 11.0.12-open
 sdk i gradle
 
-# NodeJS (NVM)
-#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-#echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.bashrc
-#echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.zshrc
-#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-#nvm install --lts
+#IntelliJ
 
-#NodeJS(Official)
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt install -y nodejs
+#Android Studio
+
+# NodeJS (NVM)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.bashrc
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.zshrc
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install --lts
+
+#NodeJS latest LTS(Official)
+#curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+#sudo apt install -y nodejs
 
 # VS Code
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
@@ -95,8 +103,8 @@ curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update && sudo apt install spotify-client -y
 
-# VLC e Virtualbox
-sudo apt install vlc virtualbox -y
+# VLC, Virtualbox, Flameshot and CopyQ
+sudo apt install vlc virtualbox flameshot copyq -y
 
 # Teams
 wget "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb" -O teams.deb
@@ -104,13 +112,18 @@ sudo apt install ./teams.deb
 rm teams.deb
 
 # RocketChat
-wget "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.7.7/rocketchat_3.7.7_amd64.deb" -O rocketchat.deb
+wget "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.8.7/rocketchat-3.8.7-linux-amd64.deb" -O rocketchat.deb
 sudo apt install ./rocketchat.deb
 rm rocketchat.deb
 
+# Evernote
+wget "https://github.com/search5/Evernote-for-Linux/releases/download/v10.39.6-linux-ddl-ga-3451/evernote-client_10.39.6-3451_amd64.deb" -O evernote.deb
+sudo apt install ./evernote.deb
+rm evernote.deb
+
 # Discord
-wget "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb" -O discord.deb
-sudo apt -y install ./discord.deb
-rm discord.deb
+#wget "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb" -O discord.deb
+#sudo apt -y install ./discord.deb
+#rm discord.deb
 
 sudo apt autoremove -y
