@@ -103,8 +103,8 @@ curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update && sudo apt install spotify-client -y
 
-# VLC, Virtualbox, Flameshot, CopyQ, evolution-ews and libqt5webkit5
-sudo apt install vlc virtualbox flameshot copyq evolution-ews libqt5webkit5 -y
+# a lot of apps :D
+sudo apt install vlc virtualbox flameshot copyq evolution-ews libqt5webkit5 chrome-gnome-shell gnome-shell-extensions gnome-tweaks -y
 
 # Teams
 wget "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb" -O teams.deb
