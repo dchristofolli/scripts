@@ -37,7 +37,8 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt update
 sudo apt -y install docker-ce \
     docker-ce-cli \
-    containerd.io -y
+    containerd.io -y \
+    docker-compose-plugin
 sudo usermod -aG docker $USER
 sudo systemctl start docker
 sudo systemctl enable docker
