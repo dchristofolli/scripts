@@ -118,7 +118,7 @@ sudo apt install ./rocketchat.deb
 rm rocketchat.deb
 
 # Evernote
-wget "https://github.com/search5/Evernote-for-Linux/releases/download/v10.39.6-linux-ddl-ga-3451/evernote-client_10.39.6-3451_amd64.deb" -O evernote.deb
+wget "https://github.com/search5/Evernote-for-Linux/releases/download/v10.40.9-linux-ddl-ga-3494/evernote-client_10.40.9-3494_amd64.deb" -O evernote.deb
 sudo apt install ./evernote.deb
 rm evernote.deb
 
