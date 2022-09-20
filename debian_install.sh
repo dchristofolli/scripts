@@ -88,13 +88,18 @@ Categories=Development;Code;
 EOT
 rm postman.tar.gz
 
+# Virtualbox
+wget https://download.virtualbox.org/virtualbox/6.1.38/virtualbox-6.1_6.1.38-153438~Debian~bullseye_amd64.deb
+sudo apt -y install ./virtualbox-*.deb
+rm virtualbox-*.deb
+
 # Spotify
 curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update && sudo apt install spotify-client -y
 
 # a lot of apps :D
-sudo apt install git vlc virtualbox flameshot copyq evolution-ews libqt5webkit5 htop chrome-gnome-shell gnome-shell-extensions -y
+sudo apt install git vlc flameshot copyq evolution-ews libqt5webkit5 htop chrome-gnome-shell gnome-shell-extensions -y
 
 # Teams
 wget "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb" -O teams.deb
@@ -115,5 +120,8 @@ rm evernote.deb
 #wget "https://dl.discordapp.net/apps/linux/0.0.18/discord-0.0.18.deb" -O discord.deb
 #sudo apt -y install ./discord.deb
 #rm discord.deb
+
+# Removing junky
+sudo apt -y remove gnome-2048 aisleriot cheese gnome-chess five-or-more four-in-a-row hitori gnome-klotski lightsoff gnome-mahjongg gnome-mines gnome-music gnome-nibbles quadrapassel rhythmbox gnome-robots shotwell gnome-sound-recorder gnome-sudoku swell-foop tali gnome-taquin gnome-tetravex gnome-todo iagno
 
 sudo apt autoremove -y
