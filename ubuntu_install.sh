@@ -123,7 +123,7 @@ sudo apt install ./evernote.deb
 rm evernote.deb
 
 # Discord
-#wget "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb" -O discord.deb
+#wget "https://dl.discordapp.net/apps/linux/0.0.18/discord-0.0.18.deb" -O discord.deb
 #sudo apt -y install ./discord.deb
 #rm discord.deb
 

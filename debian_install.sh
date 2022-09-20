@@ -39,6 +39,15 @@ sudo usermod -aG docker $USER
 sudo systemctl start docker
 sudo systemctl enable docker
 
+# Firefox
+sudo wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+sudo mv firefox.tar.bz2 /opt
+sudo tar -jxvf /opt/firefox.tar.bz2 -C /opt
+sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
+sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+sudo chown -R $USER:$USER /opt/firefox
+sudo rm /opt/firefox.tar.bz2
+
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb -y
@@ -87,6 +96,7 @@ Comment=Postman GUI
 Categories=Development;Code;
 EOT
 rm postman.tar.gz
+rm -rf Postman
 
 # Virtualbox
 wget https://download.virtualbox.org/virtualbox/6.1.38/virtualbox-6.1_6.1.38-153438~Debian~bullseye_amd64.deb
