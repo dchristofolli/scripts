@@ -109,12 +109,18 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sou
 sudo apt update && sudo apt install spotify-client -y
 
 # a lot of apps :D
-sudo apt install git vlc flameshot copyq evolution-ews libqt5webkit5 htop chrome-gnome-shell gnome-shell-extensions -y
+sudo apt install git vlc flameshot copyq kazam evolution-ews libqt5webkit5 htop chrome-gnome-shell gnome-shell-extensions -y
 
 # Teams
 wget "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb" -O teams.deb
 sudo apt install ./teams.deb
 rm teams.deb
+
+# Genymotion
+wget "https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin" -O genymotion.bin
+chmod +x genymotion.bin
+sudo ./genymotion.bin -y
+rm genymotion.bin
 
 # RocketChat
 wget "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.8.9/rocketchat-3.8.9-linux-amd64.deb" -O rocketchat.deb
