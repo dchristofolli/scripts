@@ -54,6 +54,10 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk i java 11.0.12-open
 sdk i gradle
 
+# IntelliJ
+wget -q https://download.jetbrains.com/idea/ideaIU-2022.2.2.tar.gz
+sudo tar -xzf ideaIU-2022.2.2.tar.gz -C /opt
+
 # NodeJS (NVM)
 #curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 #echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -117,6 +121,9 @@ rm rocketchat.deb
 # Gnome shell extensions
 
 sudo apt autoremove -y
+
+# IntelliJ first run
+/opt/idea-IU-222.4167.29/bin/idea.sh
 
 # https://extensions.gnome.org/extension/615/appindicator-support/
 # AppIndicator and KStatusNotifierItem SupportAppIndicator and KStatusNotifierItem Support (enables GlobalProtect tray icon)
