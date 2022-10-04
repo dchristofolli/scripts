@@ -96,18 +96,18 @@ sudo apt install git vlc virtualbox flameshot copyq evolution-ews libqt5webkit5 
 
 # Teams
 wget "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb" -O teams.deb
-sudo apt install ./teams.deb
+sudo apt -y install ./teams.deb
 rm teams.deb
 
 # RocketChat
 wget "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.8.7/rocketchat-3.8.7-linux-amd64.deb" -O rocketchat.deb
-sudo apt install ./rocketchat.deb
+sudo apt -y install ./rocketchat.deb
 rm rocketchat.deb
 
 # Evernote
-wget "https://github.com/search5/Evernote-for-Linux/releases/download/v10.40.9-linux-ddl-ga-3494/evernote-client_10.40.9-3494_amd64.deb" -O evernote.deb
-sudo apt install ./evernote.deb
-rm evernote.deb
+#wget "https://github.com/search5/Evernote-for-Linux/releases/download/v10.40.9-linux-ddl-ga-3494/evernote-client_10.40.9-3494_amd64.deb" -O evernote.deb
+#sudo apt -y install ./evernote.deb
+#rm evernote.deb
 
 # Discord
 #wget "https://dl.discordapp.net/apps/linux/0.0.20/discord-0.0.20.deb" -O discord.deb
@@ -116,7 +116,7 @@ rm evernote.deb
 
 # Gnome shell extensions
 
+sudo apt autoremove -y
+
 # https://extensions.gnome.org/extension/615/appindicator-support/
 # AppIndicator and KStatusNotifierItem SupportAppIndicator and KStatusNotifierItem Support (enables GlobalProtect tray icon)
-
-sudo apt autoremove -y
