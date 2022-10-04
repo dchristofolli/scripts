@@ -38,6 +38,15 @@ sudo apt -y install docker-ce \
     docker-ce-cli \
     containerd.io -y \
     docker-compose-plugin
+
+sudo tee -a /etc/docker/daemon.json > /dev/null << EOT
+{
+ "default-address-pools":[
+   {"base":"10.16.0.0/16","size":24}
+ ]
+}
+EOT
+
 sudo usermod -aG docker $USER
 sudo systemctl start docker
 sudo systemctl enable docker
