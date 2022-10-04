@@ -57,6 +57,7 @@ sdk i gradle
 # IntelliJ
 wget -q https://download.jetbrains.com/idea/ideaIU-2022.2.2.tar.gz
 sudo tar -xzf ideaIU-2022.2.2.tar.gz -C /opt
+rm ideaIU-2022.2.2.tar.gz
 
 # NodeJS (NVM)
 #curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -89,6 +90,12 @@ Comment=Postman GUI
 Categories=Development;Code;
 EOT
 rm postman.tar.gz
+
+# Genymotion
+wget -q https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin
+chmod +x genymotion-3.2.1-linux_x64.bin                                         
+sudo ./genymotion-3.2.1-linux_x64.bin -y
+rm genymotion-3.2.1-linux_x64.bin
 
 # Spotify
 curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
