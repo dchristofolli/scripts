@@ -20,7 +20,7 @@ echo “Atualização de pacotes feita com sucesso”
 sudo apt install zsh wget -y
 
 # oh-my-zsh
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Docker
 sudo apt -y install \
@@ -62,9 +62,9 @@ sdk i java 11.0.12-open
 sdk i gradle
 
 # IntelliJ
-wget -q https://download.jetbrains.com/idea/ideaIU-2022.2.2.tar.gz
-sudo tar -xzf ideaIU-2022.2.2.tar.gz -C /opt
-rm ideaIU-2022.2.2.tar.gz
+wget -q https://download.jetbrains.com/idea/ideaIU-2022.3.2.tar.gz
+sudo tar -xzf ideaIU-2022.3.2.tar.gz -C /opt
+rm ideaIU-2022.3.2.tar.gz
 
 
 #Android Studio
