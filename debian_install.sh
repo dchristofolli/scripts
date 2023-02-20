@@ -17,7 +17,7 @@ fi
 echo “Atualização de pacotes feita com sucesso”
 
 # Zsh
-sudo apt install zsh -y
+sudo apt install zsh wget -y
 
 # oh-my-zsh
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -40,13 +40,13 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 # Firefox
-#sudo wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-#sudo mv firefox.tar.bz2 /opt
-#sudo tar -jxvf /opt/firefox.tar.bz2 -C /opt
-#sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
-#sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
-#sudo chown -R $USER:$USER /opt/firefox
-#sudo rm /opt/firefox.tar.bz2
+sudo wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+sudo mv firefox.tar.bz2 /opt
+sudo tar -jxvf /opt/firefox.tar.bz2 -C /opt
+sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
+sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+sudo chown -R $USER:$USER /opt/firefox
+sudo rm /opt/firefox.tar.bz2
 
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -70,14 +70,14 @@ rm ideaIU-2022.2.2.tar.gz
 #Android Studio
 
 # NodeJS (NVM)
-#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-#echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.bashrc
-#echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.zshrc
-#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-#nvm install --lts
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.bashrc
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.zshrc
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install --lts
 
 # VS Code
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
@@ -121,10 +121,10 @@ sudo apt install ./teams.deb
 rm teams.deb
 
 # Genymotion
-#wget "https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin" -O genymotion.bin
-#chmod +x genymotion.bin
-#sudo ./genymotion.bin -y
-#rm genymotion.bin
+wget "https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin" -O genymotion.bin
+chmod +x genymotion.bin
+sudo ./genymotion.bin -y
+rm genymotion.bin
 
 # RocketChat
 wget "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.8.9/rocketchat-3.8.9-linux-amd64.deb" -O rocketchat.deb
