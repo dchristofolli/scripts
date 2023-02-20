@@ -66,9 +66,6 @@ wget -q https://download.jetbrains.com/idea/ideaIU-2022.3.2.tar.gz
 sudo tar -xzf ideaIU-2022.3.2.tar.gz -C /opt
 rm ideaIU-2022.3.2.tar.gz
 
-
-#Android Studio
-
 # NodeJS (NVM)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -108,7 +105,7 @@ rm -rf Postman
 #rm virtualbox-*.deb
 
 # Spotify
-curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update && sudo apt install spotify-client -y
 
