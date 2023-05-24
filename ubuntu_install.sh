@@ -69,14 +69,14 @@ sudo tar -xzf ideaIU-2022.3.2.tar.gz -C /opt
 rm ideaIU-2022.3.2.tar.gz
 
 # NodeJS (NVM)
-#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-#echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.bashrc
-#echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.zshrc
-#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-#nvm install --lts
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.bashrc
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.zshrc
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install --lts
 
 # VS Code
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
@@ -107,7 +107,7 @@ sudo ./genymotion-3.2.1-linux_x64.bin -y
 rm genymotion-3.2.1-linux_x64.bin
 
 # Spotify
-curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update && sudo apt install spotify-client -y
 
@@ -125,9 +125,18 @@ sudo apt -y install ./rocketchat.deb
 rm rocketchat.deb
 
 # Evernote
-#wget "https://github.com/search5/Evernote-for-Linux/releases/download/v10.40.9-linux-ddl-ga-3494/evernote-client_10.40.9-3494_amd64.deb" -O evernote.deb
-#sudo apt -y install ./evernote.deb
-#rm evernote.deb
+wget "https://github.com/search5/Evernote-for-Linux/releases/download/v10.40.9-linux-ddl-ga-3494/evernote-client_10.40.9-3494_amd64.deb" -O evernote.deb
+sudo apt -y install ./evernote.deb
+rm evernote.deb
+
+# Firefox
+sudo wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+sudo mv firefox.tar.bz2 /opt
+sudo tar -jxvf /opt/firefox.tar.bz2 -C /opt
+sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
+sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+sudo chown -R $USER:$USER /opt/firefox
+sudo rm /opt/firefox.tar.bz2
 
 # Discord
 #wget "https://dl.discordapp.net/apps/linux/0.0.20/discord-0.0.20.deb" -O discord.deb
@@ -139,7 +148,7 @@ rm rocketchat.deb
 sudo apt autoremove -y
 
 # IntelliJ first run
-/opt/idea-IU-222.4167.29/bin/idea.sh
+/opt/idea-IU-223.8617.56/bin/idea.sh
 
 # https://extensions.gnome.org/extension/615/appindicator-support/
 # AppIndicator and KStatusNotifierItem SupportAppIndicator and KStatusNotifierItem Support (enables GlobalProtect tray icon)
