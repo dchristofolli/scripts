@@ -62,9 +62,9 @@ sdk i java 11.0.12-open
 sdk i gradle
 
 # IntelliJ
-wget -q https://download.jetbrains.com/idea/ideaIU-2022.2.2.tar.gz
-sudo tar -xzf ideaIU-2022.2.2.tar.gz -C /opt
-rm ideaIU-2022.2.2.tar.gz
+wget -q https://download.jetbrains.com/idea/ideaIU-2023.1.3.tar.gz
+sudo tar -xzf ideaIU-2023.1.3.tar.gz -C /opt
+rm ideaIU-2023.1.3.tar.gz
 
 
 #Android Studio
@@ -81,7 +81,7 @@ rm ideaIU-2022.2.2.tar.gz
 
 # VS Code
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" -y
 sudo apt update
 sudo apt install code
 
@@ -108,7 +108,7 @@ rm -rf Postman
 #rm virtualbox-*.deb
 
 # Spotify
-curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update && sudo apt install spotify-client -y
 
@@ -147,7 +147,7 @@ sudo apt -y remove gnome-2048 aisleriot cheese gnome-chess five-or-more four-in-
 sudo apt autoremove -y
 
 # IntelliJ first run
-/opt/idea-IU-222.4167.29/bin/idea.sh
+/opt/idea-IU-231.9161.38/bin/idea.sh
 
 # https://extensions.gnome.org/extension/615/appindicator-support/
 # AppIndicator and KStatusNotifierItem SupportAppIndicator and KStatusNotifierItem Support (enables GlobalProtect tray icon)
