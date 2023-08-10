@@ -17,10 +17,10 @@ fi
 echo “Atualização de pacotes feita com sucesso”
 
 # Zsh
-sudo apt install zsh -y
+sudo apt install zsh wget -y
 
 # oh-my-zsh
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Docker
 sudo apt -y install \
@@ -40,13 +40,13 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 # Firefox
-#sudo wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-#sudo mv firefox.tar.bz2 /opt
-#sudo tar -jxvf /opt/firefox.tar.bz2 -C /opt
-#sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
-#sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
-#sudo chown -R $USER:$USER /opt/firefox
-#sudo rm /opt/firefox.tar.bz2
+sudo wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+sudo mv firefox.tar.bz2 /opt
+sudo tar -jxvf /opt/firefox.tar.bz2 -C /opt
+sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
+sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+sudo chown -R $USER:$USER /opt/firefox
+sudo rm /opt/firefox.tar.bz2
 
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -62,26 +62,23 @@ sdk i java 11.0.12-open
 sdk i gradle
 
 # IntelliJ
-wget -q https://download.jetbrains.com/idea/ideaIU-2022.2.2.tar.gz
-sudo tar -xzf ideaIU-2022.2.2.tar.gz -C /opt
-rm ideaIU-2022.2.2.tar.gz
-
-
-#Android Studio
+wget -q https://download.jetbrains.com/idea/ideaIU-2023.1.3.tar.gz
+sudo tar -xzf ideaIU-2023.1.3.tar.gz -C /opt
+rm ideaIU-2023.1.3.tar.gz
 
 # NodeJS (NVM)
-#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-#echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.bashrc
-#echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.zshrc
-#export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-#nvm install --lts
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.bashrc
+echo "export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm" >> /home/$USER/.zshrc
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install --lts
 
 # VS Code
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" -y
 sudo apt update
 sudo apt install code
 
@@ -108,7 +105,7 @@ rm -rf Postman
 #rm virtualbox-*.deb
 
 # Spotify
-curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update && sudo apt install spotify-client -y
 
@@ -121,10 +118,10 @@ sudo apt install ./teams.deb
 rm teams.deb
 
 # Genymotion
-#wget "https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin" -O genymotion.bin
-#chmod +x genymotion.bin
-#sudo ./genymotion.bin -y
-#rm genymotion.bin
+wget "https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin" -O genymotion.bin
+chmod +x genymotion.bin
+sudo ./genymotion.bin -y
+rm genymotion.bin
 
 # RocketChat
 wget "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.8.9/rocketchat-3.8.9-linux-amd64.deb" -O rocketchat.deb
@@ -147,7 +144,7 @@ sudo apt -y remove gnome-2048 aisleriot cheese gnome-chess five-or-more four-in-
 sudo apt autoremove -y
 
 # IntelliJ first run
-/opt/idea-IU-222.4167.29/bin/idea.sh
+/opt/idea-IU-231.9161.38/bin/idea.sh
 
 # https://extensions.gnome.org/extension/615/appindicator-support/
 # AppIndicator and KStatusNotifierItem SupportAppIndicator and KStatusNotifierItem Support (enables GlobalProtect tray icon)
