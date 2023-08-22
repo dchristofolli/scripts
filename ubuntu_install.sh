@@ -17,10 +17,10 @@ fi
 echo “Atualização de pacotes feita com sucesso”
 
 # Zsh
-sudo apt install zsh -y
+#sudo apt install zsh -y
 
 # oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Google chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -28,11 +28,11 @@ sudo apt install ./google-chrome-stable_current_amd64.deb -y
 rm -f google-chrome-stable_current_amd64.deb*
 
 # Sdkman
-curl -s "https://get.sdkman.io" | bash
-echo "source $HOME/.sdkman/bin/sdkman-init.sh" >> $HOME/.zshrc
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk i java 11.0.12-open
-sdk i gradle
+#curl -s "https://get.sdkman.io" | bash
+#echo "source $HOME/.sdkman/bin/sdkman-init.sh" >> $HOME/.zshrc
+#source "$HOME/.sdkman/bin/sdkman-init.sh"
+#sdk i java 11.0.12-open
+#sdk i gradle
 
 # IntelliJ
 wget -q https://download.jetbrains.com/idea/ideaIU-2023.2.tar.gz
